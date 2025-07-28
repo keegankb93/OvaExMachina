@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas>
+    <Resource>player</Resource>
+    <Texture>Sprites/player</Texture>
+    <Regions>
+        <!-- Idle group -->
+        
+        <Region group="idle" name="down" frame="1" x="0" y="0" width="24" height="24" />
+        <Region group="idle" name="down" frame="2" x="24" y="0" width="24" height="24" />
+
+        <Region group="idle" name="side" frame="1" x="0" y="48" width="24" height="24" />
+        <Region group="idle" name="side" frame="2" x="24" y="48" width="24" height="24" />
+
+        <Region group="idle" name="up" frame="1" x="0" y="96" width="24" height="24" />
+        <Region group="idle" name="up" frame="2" x="24" y="96" width="24" height="24" />
+        
+        <!-- Walk group -->
+    </Regions>
+    <Animations>
+        <Animation group="idle" name="down" delay="150" frames="1-2" />
+        <Animation group="idle" name="side" delay="150" frames="1-2" />
+        <Animation group="idle" name="up" delay="150" frames="1-2" />
+    </Animations>
+</TextureAtlas>
