@@ -31,5 +31,5 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/player.png
 
-#begin Definitions/Sprites/player_definitions.xml
-/copy:Definitions/Sprites/player_definitions.xml
+#begin Definitions/Sprites/player.xml
+/copy:Definitions/Sprites/player.xml

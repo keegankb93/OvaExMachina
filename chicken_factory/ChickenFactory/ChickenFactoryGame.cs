@@ -17,6 +17,8 @@ public class ChickenFactoryGame : Core
 {
 
     private AnimatedSprite _player;
+    private Vector2 _playerPosition;
+    private const float MOVEMENT_SPEED = 5.0f;
     
     /// <summary>
     /// Indicates if the game is running on a mobile platform.
@@ -80,6 +82,8 @@ public class ChickenFactoryGame : Core
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
             || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
+        
+        CheckKeyboardInput();
 
         _player.Update(gameTime);
         
@@ -101,11 +105,48 @@ public class ChickenFactoryGame : Core
         SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
         // Draw the slime texture region at a scale of 4.0
-        _player.Draw(SpriteBatch, Vector2.One);
+        _player.Draw(SpriteBatch, _playerPosition);
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
         
         base.Draw(gameTime);
+    }
+    
+    private void CheckKeyboardInput()
+    {
+        // Get the state of keyboard input
+        var keyboardState = Keyboard.GetState();
+
+        // If the space key is held down, the movement speed increases by 1.5
+        var speed = MOVEMENT_SPEED;
+        if (keyboardState.IsKeyDown(Keys.Space))
+        {
+            speed *= 1.5f;
+        }
+
+        // If the W or Up keys are down, move the slime up on the screen.
+        if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
+        {
+            _playerPosition.Y -= speed;
+        }
+
+        // if the S or Down keys are down, move the slime down on the screen.
+        if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
+        {
+            _playerPosition.Y += speed;
+        }
+
+        // If the A or Left keys are down, move the slime left on the screen.
+        if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
+        {
+            _playerPosition.X -= speed;
+        }
+
+        // If the D or Right keys are down, move the slime right on the screen.
+        if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+        {
+            _playerPosition.X += speed;
+        }
     }
 }
